@@ -25,7 +25,8 @@ const { Content } = await post.render();
           {post.data.date.toLocaleDateString("en-US", { 
             year: "numeric", 
             month: "long", 
-            day: "numeric" 
+            day: "numeric",
+            timeZone: "UTC"
           })}
         </time>
         {post.data.tags.length > 0 && (
