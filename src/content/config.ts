@@ -2,7 +2,7 @@ import { defineCollection, z } from "astro:content";
 
 const imageSchema = z.object({
     src: z.string().url(),
-    thumbSrc: z.string().url(),
+    thumbSrc: z.string().url().optional(),
     alt: z.string().min(1, "Alt text is required for accessibility."),
     width: z.number().int().positive(),
     height: z.number().int().positive(),

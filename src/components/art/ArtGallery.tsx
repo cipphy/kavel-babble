@@ -61,7 +61,7 @@ export default function ArtGallery({ posts }: ArtGalleryProps) {
                             <div className="overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800">
                                 <div className="aspect-[4/5] bg-neutral-100 dark:bg-neutral-900">
                                     <img
-                                        src={p.data.images[0].thumbSrc}
+                                        src={p.data.images[0].thumbSrc || p.data.images[0].src}
                                         alt={p.data.images[0].alt}
                                         width={p.data.images[0].width}
                                         height={p.data.images[0].height}

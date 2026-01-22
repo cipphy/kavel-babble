@@ -67,11 +67,11 @@ async function createArtPost(options: ArtPostOptions) {
     }
 
     // Build images array
-    const images = imageFiles.map(file => {
+    const images = imageFiles.map((file, index) => {
         return {
             src: `${MEDIA_BASE_URL}/${slug}/${file}`,
-            thumbSrc: `${MEDIA_BASE_URL}/${slug}/thumbs/${file}`,
-            alt: `${title} - Image ${imageFiles.indexOf(file) + 1}`,
+            thumbSrc: index === 0 ? `${MEDIA_BASE_URL}/${slug}/thumbs/${file}` : undefined,
+            alt: `${title} - Image ${index + 1}`,
             width: 2400, // You'll need to update these manually
             height: 3000,
         };
@@ -89,7 +89,9 @@ async function createArtPost(options: ArtPostOptions) {
 
     for (const img of images) {
         content += `  - src: "${img.src}"\n`;
-        content += `    thumbSrc: "${img.thumbSrc}"\n`;
+        if (img.thumbSrc) {
+            content += `    thumbSrc: "${img.thumbSrc}"\n`;
+        }
         content += `    alt: "${img.alt}"\n`;
         content += `    width: ${img.width}\n`;
         content += `    height: ${img.height}\n`;
