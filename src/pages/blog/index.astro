@@ -8,7 +8,7 @@ const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<BaseLayout title="Blog - Kavel Babble">
+<BaseLayout>
   <Navbar currentPath={Astro.url.pathname} />
   <main class="mx-auto max-w-5xl px-4 py-8">
     <h1 class="mb-6 text-xl font-semibold">Blog</h1>
@@ -20,7 +20,7 @@ const posts = (await getCollection("blog"))
     ) : (
       <ul class="space-y-5">
         {posts.map((p) => (
-          <li class="rounded-lg border border-neutral-200 p-4 transition-colors hover:border-neutral-300 dark:border-neutral-800 dark:hover:border-neutral-700">
+          <li class="rounded-lg border border-neutral-200 p-4 transition-colors hover:border-[#7467ff] dark:border-neutral-800 dark:hover:border-[#7467ff]">
             <a href={`/blog/${p.slug}`} class="block">
               <div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                 <h2 class="font-medium">{p.data.title}</h2>

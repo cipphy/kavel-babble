@@ -10,7 +10,7 @@ const posts = (await getCollection("art"))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<BaseLayout title="Art - Kavel Babble">
+<BaseLayout title="Kavel Babble">
   <Navbar currentPath={Astro.url.pathname} />
   <main class="mx-auto max-w-5xl px-4 py-8">
     {posts.length === 0 ? (

@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@theme {
+    --color-purple: #7467ff;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
 /* Minimal baseline */
 @layer base {
     :root {
