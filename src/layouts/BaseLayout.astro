@@ -1,0 +1,33 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "Kavel Babble" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="min-h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    
+    <!-- Theme toggle script - runs before paint to prevent flash -->
+    <script is:inline>
+      // Check localStorage first, then system preference
+      const theme = localStorage.getItem('theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (theme === 'dark' || (!theme && systemPrefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body class="min-h-full bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50">
+    <slot />
+  </body>
+</html>

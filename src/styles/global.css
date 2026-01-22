@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Minimal baseline */
+@layer base {
+    :root {
+        color-scheme: light dark;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+}
+/* Embla Carousel */
+.embla {
+    overflow: hidden;
+}
+
+.embla__container {
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+    transform: translate3d(0, 0, 0);
+    flex: 0 0 100%;
+    min-width: 0;
+}

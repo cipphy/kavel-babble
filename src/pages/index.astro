@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import ArtModal from "../components/art/ArtModal";
+import ArtGallery from "../components/art/ArtGallery";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("art"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Art - Kavel Babble">
+  <Navbar currentPath={Astro.url.pathname} />
+  <main class="mx-auto max-w-5xl px-4 py-8">
+    {posts.length === 0 ? (
+      <>
+        <h1 class="mb-6 text-xl font-semibold">Art</h1>
+        <p class="text-sm text-neutral-600 dark:text-neutral-400">
+          No art posts yet ¯\_(ツ)_/¯
+        </p>
+      </>
+    ) : (
+      <ArtGallery posts={posts} client:load />
+    )}
+  </main>
+
+  <!-- Art Modal - client-side React component -->
+  <ArtModal posts={posts} client:load />
+</BaseLayout>

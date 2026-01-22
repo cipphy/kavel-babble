@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = (await getCollection("blog")).filter((p) => !p.data.draft);
+  return posts.map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout title={`${post.data.title} - Kavel Babble`}>
+  <Navbar currentPath={Astro.url.pathname} />
+  <main class="mx-auto max-w-3xl px-4 py-10">
+    <nav class="mb-8">
+      <a 
+        href="/blog" 
+        class="text-sm text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50"
+      >
+        ← Back to Blog
+      </a>
+    </nav>
+    
+    <header class="mb-8">
+      <h1 class="text-2xl font-semibold">{post.data.title}</h1>
+      <time 
+        class="mt-2 block text-xs text-neutral-500 dark:text-neutral-400" 
+        datetime={post.data.date.toISOString()}
+      >
+        {post.data.date.toLocaleDateString("en-US", { 
+          year: "numeric", 
+          month: "long", 
+          day: "numeric" 
+        })}
+      </time>
+      <p class="mt-4 text-neutral-600 dark:text-neutral-300">
+        {post.data.description}
+      </p>
+    </header>
+
+    <article class="prose prose-neutral max-w-none dark:prose-invert prose-headings:font-semibold prose-a:text-neutral-900 prose-a:no-underline hover:prose-a:underline dark:prose-a:text-neutral-50">
+      <Content />
+    </article>
+  </main>
+</BaseLayout>

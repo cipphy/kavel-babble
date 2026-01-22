@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Blog - Kavel Babble">
+  <Navbar currentPath={Astro.url.pathname} />
+  <main class="mx-auto max-w-5xl px-4 py-8">
+    <h1 class="mb-6 text-xl font-semibold">Blog</h1>
+    
+    {posts.length === 0 ? (
+      <p class="text-sm text-neutral-600 dark:text-neutral-400">
+        No blog posts yet ¯\_(ツ)_/¯
+      </p>
+    ) : (
+      <ul class="space-y-5">
+        {posts.map((p) => (
+          <li class="rounded-lg border border-neutral-200 p-4 transition-colors hover:border-neutral-300 dark:border-neutral-800 dark:hover:border-neutral-700">
+            <a href={`/blog/${p.slug}`} class="block">
+              <div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                <h2 class="font-medium">{p.data.title}</h2>
+                <time 
+                  class="text-xs text-neutral-500 dark:text-neutral-400 sm:shrink-0" 
+                  datetime={p.data.date.toISOString()}
+                >
+                  {p.data.date.toLocaleDateString("en-US", { 
+                    year: "numeric", 
+                    month: "short", 
+                    day: "numeric" 
+                  })}
+                </time>
+              </div>
+              <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+                {p.data.description}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </main>
+</BaseLayout>
