@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title?: string;
 }
@@ -12,7 +14,6 @@ const { title = "Kavel Babble" } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <link rel="stylesheet" href="/src/styles/global.css" />
     
     <!-- Theme toggle script - runs before paint to prevent flash -->
     <script is:inline>

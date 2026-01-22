@@ -31,7 +31,8 @@ const posts = (await getCollection("blog"))
                   {p.data.date.toLocaleDateString("en-US", { 
                     year: "numeric", 
                     month: "short", 
-                    day: "numeric" 
+                    day: "numeric",
+                    timeZone: "UTC"
                   })}
                 </time>
               </div>
