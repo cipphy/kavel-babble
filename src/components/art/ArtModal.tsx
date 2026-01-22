@@ -170,6 +170,13 @@ export default function ArtModal({ posts }: ArtModalProps) {
                                     </div>
                                 )}
                             </div>
+
+                            {/* Description/Content */}
+                            {currentPost.body && (
+                                <div className="mt-4 text-sm text-neutral-300 prose-sm prose-invert">
+                                    {currentPost.body}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </Dialog.Content>
