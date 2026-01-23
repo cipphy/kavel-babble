@@ -55,6 +55,13 @@ export default function ArtFilter({ allTags, onFilterChange }: ArtFilterProps) {
     // Close dropdown when clicking outside
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+
+            // Don't close if clicking a dropdown button (let button's onClick handle it)
+            if (target.closest('button[id$="-filter"]')) {
+                return;
+            }
+
             Object.entries(dropdownRefs).forEach(([key, ref]) => {
                 if (ref.current && !ref.current.contains(event.target as Node)) {
                     if (openDropdown === key) {
@@ -64,8 +71,8 @@ export default function ArtFilter({ allTags, onFilterChange }: ArtFilterProps) {
             });
         };
 
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside);
+        document.addEventListener("click", handleClickOutside);
+        return () => document.removeEventListener("click", handleClickOutside);
     }, [openDropdown]);
 
     // Handle ESC key to close dropdown
