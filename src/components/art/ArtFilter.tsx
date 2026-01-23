@@ -184,17 +184,6 @@ export default function ArtFilter({ allTags, onFilterChange }: ArtFilterProps) {
                             aria-multiselectable="true"
                             className="absolute right-0 z-10 mt-1 max-h-60 min-w-[200px] overflow-auto rounded-lg border border-neutral-200 bg-white py-1 shadow-lg dark:border-neutral-800 dark:bg-neutral-950"
                         >
-                            <button
-                                type="button"
-                                onClick={() => handleClearCategory(category)}
-                                disabled={!hasSelections}
-                                className={`w-full border-b border-neutral-200 px-3 py-2 text-left text-xs transition-colors dark:border-neutral-800 ${hasSelections
-                                    ? "text-neutral-500 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-900 cursor-pointer"
-                                    : "text-transparent dark:text-transparent cursor-default pointer-events-none"
-                                    }`}
-                            >
-                                Clear all
-                            </button>
                             {categoryTags.map((tag) => {
                                 const isSelected = selectedTags[category].includes(tag);
                                 return (
@@ -214,6 +203,17 @@ export default function ArtFilter({ allTags, onFilterChange }: ArtFilterProps) {
                                     </label>
                                 );
                             })}
+                            <button
+                                type="button"
+                                onClick={() => handleClearCategory(category)}
+                                disabled={!hasSelections}
+                                className={`w-full border-t border-neutral-200 px-3 py-2 text-left text-xs transition-colors dark:border-neutral-800 ${hasSelections
+                                    ? "text-neutral-500 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-900 cursor-pointer"
+                                    : "text-transparent dark:text-transparent cursor-default pointer-events-none"
+                                    }`}
+                            >
+                                Clear all
+                            </button>
                         </div>
                     )}
                 </div>

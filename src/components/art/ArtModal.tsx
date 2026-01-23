@@ -10,7 +10,7 @@ interface ArtModalProps {
 export default function ArtModal({ posts }: ArtModalProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [currentSlug, setCurrentSlug] = useState<string | null>(null);
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
     const currentPost = posts.find((p) => p.slug === currentSlug);
     const currentIndex = currentPost ? posts.findIndex((p) => p.slug === currentSlug) : -1;
