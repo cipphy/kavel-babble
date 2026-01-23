@@ -56,6 +56,6 @@ images:
     alt: "Drawabox Lesson 2 - Image 13"
     width: 2528
     height: 3278
-draft: true
+draft: false
 ---
 
