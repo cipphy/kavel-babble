@@ -1,11 +1,30 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
   title?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  ogUrl?: string;
 }
 
-const { title = "Kavel Babble" } = Astro.props;
+const {
+  title = "Kavel Babble",
+  ogTitle = "Kavel Babble",
+  ogDescription = "A portfolio and blog",
+  ogImage = "/logo.svg",
+  ogType = "website",
+  ogUrl,
+} = Astro.props;
+
+// Construct absolute URLs for OG tags
+const siteUrl = "https://kavelbabble.com";
+const fullUrl = ogUrl || Astro.url.href;
+const fullImageUrl = ogImage.startsWith("http")
+  ? ogImage
+  : `${siteUrl}${ogImage}`;
 ---
 
 <!doctype html>
@@ -14,29 +33,52 @@ const { title = "Kavel Babble" } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={fullUrl} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={fullImageUrl} />
+
+    <!-- Twitter -->
+    <meta
+      property="twitter:card"
+      content={ogImage.includes("media.kavelbabble.com")
+        ? "summary_large_image"
+        : "summary"}
+    />
+    <meta property="twitter:url" content={fullUrl} />
+    <meta property="twitter:title" content={ogTitle} />
+    <meta property="twitter:description" content={ogDescription} />
+    <meta property="twitter:image" content={fullImageUrl} />
+
     <!-- Theme toggle script - runs before paint to prevent flash -->
     <script is:inline>
       // Check localStorage first, then system preference
-      const theme = localStorage.getItem('theme');
-      
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else if (theme === 'light') {
-        document.documentElement.classList.remove('dark');
+      const theme = localStorage.getItem("theme");
+
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else if (theme === "light") {
+        document.documentElement.classList.remove("dark");
       } else {
         // No preference set, use system
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
         if (systemPrefersDark) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.add("dark");
         }
       }
     </script>
   </head>
-  <body class="min-h-full bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50">
+  <body
+    class="min-h-full bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50"
+  >
     <slot />
   </body>
 </html>
