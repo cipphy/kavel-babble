@@ -268,7 +268,7 @@ export default function ArtFilter({ allTags, onFilterChange }: ArtFilterProps) {
                 </button>
                 <div className="border-b border-neutral-200 dark:border-neutral-800" />
                 <div
-                    className={`overflow-hidden transition-all duration-200 ease-in-out ${isFiltersOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    className={`transition-all duration-200 ease-in-out ${isFiltersOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
                         }`}
                 >
                     <div className="flex flex-col gap-3 pb-4 pt-3">
