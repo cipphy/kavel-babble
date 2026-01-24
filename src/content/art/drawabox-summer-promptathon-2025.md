@@ -1,7 +1,7 @@
 ---
 title: "Drawabox Summer Promptathon 2025"
 date: "2025-06-30"
-tags: ["drawabox", "ink"]
+tags: ["promptathon", "ink"]
 images:
   - src: "https://media.kavelbabble.com/art/drawabox-summer-promptathon-2025/01.jpg"
     thumbSrc: "https://media.kavelbabble.com/art/drawabox-summer-promptathon-2025/thumbs/01.jpg"

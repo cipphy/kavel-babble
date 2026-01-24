@@ -1,7 +1,7 @@
 ---
 title: "Drawabox Spring Promptathon 2025"
 date: "2025-03-31"
-tags: ["drawabox", "ink"]
+tags: ["promptathon", "ink"]
 images:
   - src: "https://media.kavelbabble.com/art/drawabox-spring-promptathon-2025/01.jpg"
     thumbSrc: "https://media.kavelbabble.com/art/drawabox-spring-promptathon-2025/thumbs/01.jpg"
