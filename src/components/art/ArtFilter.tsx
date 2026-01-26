@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 // Tag categorization
 const FIDELITY_TAGS = ["doodle", "sketch", "ink"];
 const MEDIUM_TAGS = ["digital", "traditional"];
-const PROGRAM_TAGS = ["personal", "drawabox"];
+const PROGRAM_TAGS = ["personal", "drawabox", "promptathon"];
 
 // Helper to categorize tags
 function categorizeTags(tags: string[]) {
