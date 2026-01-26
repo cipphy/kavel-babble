@@ -196,16 +196,12 @@ export default function ArtFilter({ allTags, onFilterChange }: ArtFilterProps) {
                                         key={tag}
                                         role="option"
                                         aria-selected={isSelected}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            handleTagToggle(category, tag);
-                                        }}
                                         className="flex cursor-pointer items-center gap-2 px-3 py-2 text-sm transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900"
                                     >
                                         <input
                                             type="checkbox"
                                             checked={isSelected}
-                                            onChange={() => {}}
+                                            onChange={() => handleTagToggle(category, tag)}
                                             className="h-4 w-4 rounded border-neutral-300 text-neutral-900 focus:ring-2 focus:ring-neutral-200 focus:ring-offset-0 dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 dark:focus:ring-neutral-800"
                                         />
                                         <span>{tag}</span>
