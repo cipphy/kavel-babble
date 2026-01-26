@@ -1,7 +1,7 @@
 ---
 title: "Drawings Vol 3"
 date: "2025-12-10"
-tags: ["traditional", "digital", "sketch", "ink"]
+tags: ["traditional", "digital", "sketch", "ink", "traditional"]
 images:
   - src: "https://media.kavelbabble.com/art/drawings-vol-3/01.jpg"
     thumbSrc: "https://media.kavelbabble.com/art/drawings-vol-3/thumbs/01.jpg"

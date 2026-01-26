@@ -1,7 +1,7 @@
 ---
 title: "Drawabox Lesson 1"
 date: "2023-06-18"
-tags: ["drawabox", "ink"]
+tags: ["drawabox", "ink", "traditional"]
 images:
   - src: "https://media.kavelbabble.com/art/drawabox-lesson-1/01.jpg"
     thumbSrc: "https://media.kavelbabble.com/art/drawabox-lesson-1/thumbs/01.jpg"

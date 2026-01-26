@@ -1,7 +1,7 @@
 ---
 title: "Singapore Trip"
 date: "2026-01-10"
-tags: ["sketch"]
+tags: ["sketch", "traditional"]
 images:
   - src: "https://media.kavelbabble.com/art/singapore-trip/01.jpg"
     thumbSrc: "https://media.kavelbabble.com/art/singapore-trip/thumbs/01.jpg"

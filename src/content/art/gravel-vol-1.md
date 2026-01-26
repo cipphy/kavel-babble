@@ -1,7 +1,7 @@
 ---
 title: "Gravel Vol 1"
 date: "2025-04-17"
-tags: ["digital", "doodle", "sketch"]
+tags: ["traditional", "doodle", "sketch"]
 images:
   - src: "https://media.kavelbabble.com/art/gravel-vol-1/01.jpg"
     thumbSrc: "https://media.kavelbabble.com/art/gravel-vol-1/thumbs/01.jpg"

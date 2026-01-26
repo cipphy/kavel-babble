@@ -1,7 +1,7 @@
 ---
 title: "Drawabox Winter Promptathon 2024"
 date: "2025-01-01"
-tags: ["promptathon", "ink"]
+tags: ["promptathon", "ink", "traditional"]
 images:
   - src: "https://media.kavelbabble.com/art/drawabox-winter-promptathon-2024/01.jpg"
     thumbSrc: "https://media.kavelbabble.com/art/drawabox-winter-promptathon-2024/thumbs/01.jpg"
