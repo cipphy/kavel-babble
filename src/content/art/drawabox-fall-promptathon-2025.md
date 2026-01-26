@@ -1,7 +1,7 @@
 ---
 title: "Drawabox Fall Promptathon 2025"
 date: "2025-09-30"
-tags: ["drawabox", "ink"]
+tags: ["promptathon", "ink"]
 images:
   - src: "https://media.kavelbabble.com/art/drawabox-fall-promptathon-2025/01.jpg"
     thumbSrc: "https://media.kavelbabble.com/art/drawabox-fall-promptathon-2025/thumbs/01.jpg"
