@@ -27,6 +27,7 @@ pnpm-debug.log*
 
 # personal
 ig_*
+scrubber/
 
 # keys
 token.json
