@@ -75,6 +75,49 @@ const fullImageUrl = ogImage.startsWith("http")
         }
       }
     </script>
+
+    <!-- Page transition script for Art/Blog navigation -->
+    <script is:inline>
+      // Handle smooth transitions between Art and Blog sections
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fade in on page load
+        document.body.style.opacity = "1";
+
+        // Add transition to navigation links
+        const artLink = document.querySelector('a[href="/"]');
+        const blogLink = document.querySelector('a[href="/blog"]');
+
+        function handleNavClick(e) {
+          const targetUrl = e.currentTarget.href;
+          const currentPath = window.location.pathname;
+
+          // Only intercept if navigating between Art and Blog sections
+          const isNavigatingToArt =
+            targetUrl.endsWith("/") && !currentPath.endsWith("/");
+          const isNavigatingToBlog =
+            targetUrl.includes("/blog") && !currentPath.includes("/blog");
+
+          if (isNavigatingToArt || isNavigatingToBlog) {
+            e.preventDefault();
+            document.body.style.opacity = "0";
+
+            setTimeout(() => {
+              window.location.href = targetUrl;
+            }, 150);
+          }
+        }
+
+        if (artLink) artLink.addEventListener("click", handleNavClick);
+        if (blogLink) blogLink.addEventListener("click", handleNavClick);
+      });
+    </script>
+
+    <style is:global>
+      body {
+        opacity: 0;
+        transition: opacity 150ms ease-in-out;
+      }
+    </style>
   </head>
   <body
     class="min-h-full bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50"

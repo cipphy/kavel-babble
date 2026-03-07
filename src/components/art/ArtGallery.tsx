@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import ArtFilter from "./ArtFilter";
 import type { CollectionEntry } from "astro:content";
 
@@ -8,6 +9,7 @@ interface ArtGalleryProps {
 
 export default function ArtGallery({ posts }: ArtGalleryProps) {
     const [filteredPosts, setFilteredPosts] = useState(posts);
+    const [parent] = useAutoAnimate();
 
     // Extract all unique tags
     const allTags = Array.from(
@@ -17,11 +19,23 @@ export default function ArtGallery({ posts }: ArtGalleryProps) {
     const handleFilterChange = (tags: string[], sort: string) => {
         let filtered = [...posts];
 
-        // Apply tag filter - show posts that have ANY selected tag
-        if (tags.length > 0) {
-            filtered = filtered.filter((p) =>
-                tags.some((tag) => p.data.tags.includes(tag))
-            );
+        // Separate add tags (+prefix) and remove tags (-prefix)
+        const addTags = tags
+            .filter((tag) => tag.startsWith('+'))
+            .map((tag) => tag.slice(1));
+        const removeTags = tags
+            .filter((tag) => tag.startsWith('-'))
+            .map((tag) => tag.slice(1));
+
+        // Apply tag filters:
+        // - If add tags exist, post must have at least one (OR operation)
+        // - Post must NOT have any remove tags
+        if (addTags.length > 0 || removeTags.length > 0) {
+            filtered = filtered.filter((p) => {
+                const includesAddTag = addTags.length === 0 || addTags.some((tag) => p.data.tags.includes(tag));
+                const includesRemoveTag = removeTags.some((tag) => p.data.tags.includes(tag));
+                return includesAddTag && !includesRemoveTag;
+            });
         }
 
         // Apply sort
@@ -55,7 +69,7 @@ export default function ArtGallery({ posts }: ArtGalleryProps) {
                     No art posts match the selected filters.
                 </p>
             ) : (
-                <section className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <section ref={parent} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                     {filteredPosts.map((p) => (
                         <a key={p.slug} href={`/art/${p.slug}`} className="group block">
                             <div className="overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800">
