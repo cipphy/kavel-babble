@@ -34,3 +34,4 @@ token.json
 
 # Developer stuff
 .dev/
+_backup*
