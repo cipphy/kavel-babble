@@ -31,3 +31,6 @@ scrubber/
 
 # keys
 token.json
+
+# Developer stuff
+.dev/
