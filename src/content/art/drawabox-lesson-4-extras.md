@@ -1,6 +1,6 @@
 ---
 title: "Drawabox Lesson 4 Extras"
-date: "2024-07-11"
+date: "2-07-11"
 tags: ["drawabox", "ink"]
 images:
   - src: "https://media.kavelbabble.com/art/drawabox-lesson-4-extras/01.jpg"

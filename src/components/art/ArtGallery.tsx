@@ -17,10 +17,10 @@ export default function ArtGallery({ posts }: ArtGalleryProps) {
     const handleFilterChange = (tags: string[], sort: string) => {
         let filtered = [...posts];
 
-        // Apply tag filter - show posts that have ALL selected tags
+        // Apply tag filter - show posts that have ANY selected tag
         if (tags.length > 0) {
             filtered = filtered.filter((p) =>
-                tags.every((tag) => p.data.tags.includes(tag))
+                tags.some((tag) => p.data.tags.includes(tag))
             );
         }
 
