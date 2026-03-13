@@ -2,7 +2,7 @@
 title: "Hello World"
 date: "2026-01-21"
 tags: ["traditional", "doodle"]
-draft: false
+draft: true
 images:
   - src: "https://media.kavelbabble.com/art/hello-world/01.jpg"
     thumbSrc: "https://media.kavelbabble.com/art/hello-world/01.jpg"
