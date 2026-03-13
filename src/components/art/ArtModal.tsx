@@ -1,6 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import useEmblaCarousel from "embla-carousel-react";
+import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
 import type { CollectionEntry } from "astro:content";
 
 interface ArtModalProps {
@@ -173,8 +175,10 @@ export default function ArtModal({ posts }: ArtModalProps) {
 
                             {/* Description/Content */}
                             {currentPost.body && (
-                                <div className="mt-4 text-sm text-neutral-300 prose-sm prose-invert">
-                                    {currentPost.body}
+                                <div className="prose prose-sm prose-invert mt-4 max-h-24 max-w-none overflow-y-auto pr-1 text-neutral-300 sm:max-h-32">
+                                    <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                                        {currentPost.body}
+                                    </ReactMarkdown>
                                 </div>
                             )}
                         </div>
