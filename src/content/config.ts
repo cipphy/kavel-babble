@@ -29,4 +29,16 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { art, blog };
+const exercises = defineCollection({
+    type: "content",
+    schema: z.object({
+        title: z.string().min(1),
+        description: z.string().min(1),
+        image: imageSchema,
+        group: z.string().trim().min(1),
+        id: z.string().regex(/^[0-9a-z]{2}$/, "id must be exactly 2 lowercase base36 characters (0-9, a-z)"),
+        draft: z.boolean().default(false),
+    }),
+});
+
+export const collections = { art, blog, exercises };

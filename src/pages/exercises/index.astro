@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import ExercisesList from "../../components/exercises/ExercisesList";
+import { getCollection } from "astro:content";
+import { findDuplicateIds } from "../../lib/exercises/idMap";
+
+const exercises = (await getCollection("exercises"))
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const duplicateIds = findDuplicateIds(exercises);
+if (duplicateIds.length > 0) {
+  console.warn(
+    `Duplicate exercise id(s) detected: ${duplicateIds.join(", ")} — each exercise's "id" frontmatter field must be unique.`,
+  );
+}
+---
+
+<BaseLayout
+  title="Exercises · Kavel Babble"
+  ogTitle="Exercises"
+  ogDescription="A spaced-repetition warmup generator for drawing exercises"
+  ogImage="/logo.svg"
+  ogType="website"
+>
+  <Navbar currentPath={Astro.url.pathname} />
+  <main class="mx-auto max-w-5xl px-4 py-8">
+    {exercises.length === 0 ? (
+      <p class="text-sm text-neutral-600 dark:text-neutral-400">
+        No exercises yet ¯\_(ツ)_/¯
+      </p>
+    ) : (
+      <ExercisesList exercises={exercises} client:load />
+    )}
+  </main>
+</BaseLayout>

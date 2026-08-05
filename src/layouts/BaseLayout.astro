@@ -86,18 +86,21 @@ const fullImageUrl = ogImage.startsWith("http")
         // Add transition to navigation links
         const artLink = document.querySelector('a[href="/"]');
         const blogLink = document.querySelector('a[href="/blog"]');
+        const exercisesLink = document.querySelector('a[href="/exercises"]');
 
         function handleNavClick(e) {
           const targetUrl = e.currentTarget.href;
           const currentPath = window.location.pathname;
 
-          // Only intercept if navigating between Art and Blog sections
+          // Only intercept if navigating between Art, Blog, and Exercises sections
           const isNavigatingToArt =
             targetUrl.endsWith("/") && !currentPath.endsWith("/");
           const isNavigatingToBlog =
             targetUrl.includes("/blog") && !currentPath.includes("/blog");
+          const isNavigatingToExercises =
+            targetUrl.includes("/exercises") && !currentPath.includes("/exercises");
 
-          if (isNavigatingToArt || isNavigatingToBlog) {
+          if (isNavigatingToArt || isNavigatingToBlog || isNavigatingToExercises) {
             e.preventDefault();
             document.body.style.opacity = "0";
 
@@ -109,6 +112,7 @@ const fullImageUrl = ogImage.startsWith("http")
 
         if (artLink) artLink.addEventListener("click", handleNavClick);
         if (blogLink) blogLink.addEventListener("click", handleNavClick);
+        if (exercisesLink) exercisesLink.addEventListener("click", handleNavClick);
       });
     </script>
 

@@ -6,6 +6,7 @@ interface Props {
 const { currentPath = "" } = Astro.props;
 const isArt = currentPath === "/" || currentPath.startsWith("/art");
 const isBlog = currentPath.startsWith("/blog");
+const isExercises = currentPath.startsWith("/exercises");
 ---
 
 <header class="sticky top-0 z-10 border-b border-neutral-200 bg-white/80 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/80">
@@ -27,7 +28,14 @@ const isBlog = currentPath.startsWith("/blog");
           isBlog ? "bg-[#7467ff]/10 text-[#7467ff]" : "hover:bg-neutral-100 dark:hover:bg-neutral-900"
         ]}
       >Blog</a>
-      
+      <a
+        href="/exercises"
+        class:list={[
+          "rounded px-2 py-1 transition-colors",
+          isExercises ? "bg-[#7467ff]/10 text-[#7467ff]" : "hover:bg-neutral-100 dark:hover:bg-neutral-900"
+        ]}
+      >Exercises</a>
+
       <!-- Theme toggle button -->
       <button
         id="theme-toggle"
